@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/holo_red_light">
+
+
+    <android.support.design.widget.AppBarLayout
+        android:id="@+id/app_bar"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:background="@android:color/transparent"
+        android:theme="@style/AppTheme.AppBarOverlay">
+
+        <android.support.design.widget.CollapsingToolbarLayout
+            android:id="@+id/main.collapsing"
+            android:layout_width="1dp"
+            android:layout_height="match_parent"
+            android:background="@android:color/transparent"
+            app:contentScrim="@android:color/holo_red_light"
+            app:titleEnabled="false"
+            app:layout_scrollFlags="scroll|exitUntilCollapsed">
+
+            <android.support.v7.widget.Toolbar
+                android:id="@+id/Toolbar"
+                android:layout_width="1dp"
+                android:layout_height="?attr/actionBarSize"
+                app:layout_collapseMode="pin"
+                app:popupTheme="@style/AppTheme.PopupOverlay"/>
+
+        </android.support.design.widget.CollapsingToolbarLayout>
+
+    </android.support.design.widget.AppBarLayout>
+
+
+    <ImageView
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:src="@mipmap/zoonooz"
+        android:layout_marginTop="40dp"
+        android:layout_marginLeft="10dp"
+        app:layout_behavior="@string/simple_view_behavior"
+        app:behavior_dependsOn="@+id/app_bar"
+        app:behavior_dependType="y"
+        app:behavior_dependTarget="-176dp"
+        app:behavior_targetX="16dp"
+        app:behavior_targetY="8dp"
+        app:behavior_targetWidth="30dp"
+        app:behavior_targetHeight="30dp"/>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="50dp"
+        android:orientation="horizontal"
+        android:layout_marginTop="40dp"
+        android:layout_marginLeft="70dp"
+        app:behavior_dependsOn="@+id/app_bar"
+        app:behavior_dependType="y"
+        app:behavior_dependTarget="-176dp"
+        android:gravity="center"
+        app:behavior_targetX="10dp"
+        app:behavior_targetY="40dp"
+        app:layout_behavior="@string/simple_view_behavior"
+        app:behavior_targetAlpha="0"
+        app:behavior_targetWidth="0dp"
+        app:behavior_targetHeight="0dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="登录"
+            android:textColor="@android:color/white"
+            android:textSize="16sp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="/"
+            android:textColor="@android:color/white"
+            android:textSize="16sp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="注册"
+            android:textColor="@android:color/white"
+            android:textSize="16sp" />
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:id="@+id/LinearLayout"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:gravity="right"
+        android:layout_alignParentBottom="true"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginTop="156dp"
+        android:background="@drawable/shape_rect_sol_black_cor8"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/TextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical|right"
+            android:padding="10dp"
+            android:text="点击查看特权"
+            android:textColor="#AAFFFF00"
+            android:textSize="12sp"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:orientation="horizontal"
+        android:gravity="center_vertical|right">
+
+        <ImageView
+            android:layout_width="?attr/actionBarSize"
+            android:layout_height="?attr/actionBarSize"
+            android:padding="15dp"
+            android:src="@mipmap/ic_fix"/>
+
+    </LinearLayout>
+
+
+    <com.rhino.coordinatorlayoutdemo.view.SpringScrollView
+        android:id="@+id/SpringScrollView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@android:color/white"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:lineSpacingExtra="8dp"
+            android:padding="16dp"
+            android:text="@string/large_text"
+            android:textSize="20sp" />
+
+    </com.rhino.coordinatorlayoutdemo.view.SpringScrollView>
+
+</android.support.design.widget.CoordinatorLayout>

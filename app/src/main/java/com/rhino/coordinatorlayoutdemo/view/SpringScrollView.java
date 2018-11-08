@@ -18,6 +18,7 @@ public class SpringScrollView extends NestedScrollView {
     private SpringAnimation springAnim;
     private SpringAnimation springAnim1;
     private ScrollViewListener scrollViewListener = null;
+    private int maxScrollHeight = 200;
 
     public SpringScrollView(Context context) {
         this(context, null);
@@ -34,14 +35,16 @@ public class SpringScrollView extends NestedScrollView {
         //刚度 默认1200 值越大回弹的速度越快
         springAnim.getSpring().setStiffness(1000.0f);
         //阻尼 默认0.5 值越小，回弹之后来回的次数越多
-        springAnim.getSpring().setDampingRatio(0.35f);
+        springAnim.getSpring().setDampingRatio(1f);
 
 
-        springAnim1 = new SpringAnimation(this, SpringAnimation.TRANSLATION_Y, ScreenUtils.dip2px(getContext(), 60));
+        springAnim1 = new SpringAnimation(this, SpringAnimation.TRANSLATION_Y, ScreenUtils.dip2px(getContext(), 150));
         //刚度 默认1200 值越大回弹的速度越快
-        springAnim1.getSpring().setStiffness(10000.0f);
+        springAnim1.getSpring().setStiffness(1000.0f);
         //阻尼 默认0.5 值越小，回弹之后来回的次数越多
         springAnim1.getSpring().setDampingRatio(1f);
+
+        maxScrollHeight = ScreenUtils.dip2px(getContext(), 150);
     }
 
     @Override
@@ -54,7 +57,9 @@ public class SpringScrollView extends NestedScrollView {
                         startDragY = e.getRawY();
                     }
                     if (e.getRawY() - startDragY >= 0) {
-                        setTranslationY((e.getRawY() - startDragY) / 3);
+                        if (getTranslationY() < maxScrollHeight) {
+                            setTranslationY((e.getRawY() - startDragY) / 2);
+                        }
                         return super.onTouchEvent(e);
                     } else {
                         startDragY = 0;
@@ -83,6 +88,8 @@ public class SpringScrollView extends NestedScrollView {
                     springAnim.start();
                 }
                 startDragY = 0;
+                break;
+            default:
                 break;
         }
         return super.onTouchEvent(e);

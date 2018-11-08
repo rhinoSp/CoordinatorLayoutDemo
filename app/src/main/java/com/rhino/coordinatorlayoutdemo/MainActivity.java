@@ -38,14 +38,34 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        findViewById(R.id.fix).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mSpringScrollView.startAnimation(shake);
+            }
+        });
 
-        mSpringScrollView.startAnim1();
+
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                mLinearLayout.startAnimation(shake);
+            }
+        }, 4000);
+
+
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                mSpringScrollView.startAnim1();
+            }
+        }, 1000);
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
                 mSpringScrollView.startAnim();
             }
-        }, 800);
+        }, 3000);
         mSpringScrollView.setScrollViewListener(new SpringScrollView.ScrollViewListener() {
             @Override
             public void onScrollChanged(SpringScrollView scrollView, int x, int y, int oldx, int oldy) {
@@ -57,7 +77,7 @@ public class MainActivity extends AppCompatActivity {
         mSpringScrollView.setOnAnimationEndListener(new DynamicAnimation.OnAnimationEndListener() {
             @Override
             public void onAnimationEnd(DynamicAnimation animation, boolean canceled, float value, float velocity) {
-//                mSpringScrollView.startAnimation(shake);
+                mSpringScrollView.startAnimation(shake);
             }
         });
 
